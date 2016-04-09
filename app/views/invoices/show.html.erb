@@ -1,0 +1,47 @@
+
+
+<div class="row">
+<%= image_tag "logo.png", size: "400x200" %>
+	<div class='pull-right'>
+		<p>
+		SH HOTEL SDN BHD<br>
+		GST:000174313472<br>
+		84 JALAN SUNGAI BESI PUDU,<br>
+		KUALA LUMPUR, 57100, MALAYSIA.<br>
+		TEL: 03-9226 2202<br>
+		shhotel@gmail.com<br>
+		www.hotelshkl.com<br>
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="text-center">
+		<h1><b>TAX INVOICE</b></h1>
+	</div>
+</div>
+
+<div class="row">
+<div class="pull-right">
+Date: <%= Time.now.strftime("%^a %d/%m/%Y") %><br>
+Time: <%= Time.now.strftime("%I:%M %p") %>
+</div>
+<div>
+	Name: <%= @invoice.name %><br>
+	IC/Passport: <%= @invoice.identification %><br>
+	D.O.B.: <%= @invoice.dob.strftime("%d/%m/%Y") %><br>
+	Room number: <%= @invoice.room %><br>
+	Net Price(RM): <%= @net %><br>
+	GST 6%: <%= number_with_precision(@gst, precision: 2) %><br>
+	Net Total(RM): <%= @total %><br>
+	<% if @invoice.address != "" %>
+		Address: <%= @invoice.address %><br>
+	<% end %>
+	<% if @invoice.phone != "" %>
+		Phone: <%= @invoice.phone %><br>
+	<% end %>
+	<% if @invoice.email != "" %>
+		Email: <%= @invoice.email %><br>
+	<% end %>
+</div>
+</div>

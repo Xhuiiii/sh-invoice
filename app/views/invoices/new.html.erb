@@ -1,0 +1,32 @@
+<%= form_for @invoice do |f| %>
+	<div class="form-group">
+		<div class="form-lab"><b>Name:</b></div> <%= f.text_field :name, placeholder: "Guest name" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>IC/Passport:</b></div> <%= f.text_field :identification, placeholder: "IC/Passport" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>D.O.B.:</b></div> <%= f.text_field :dob, placeholder: "DD/MM/YYYY" %>
+	<div class="form-group">
+		<div class="form-lab"><b>Room number:</b></div> <%= f.text_field :room, placeholder: "Room number" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>Days:</b></div> <%= f.text_field :days, placeholder: "1"%>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>Room rate/night:</b></div> <%= f.text_field :rate, placeholder: "118" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>Address:</b></div> <%= f.text_field :address, placeholder: "Guest address" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>Phone:</b></div> <%= f.text_field :phone, placeholder: "Phone number" %>
+	</div>
+	<div class="form-group">
+		<div class="form-lab"><b>Email:</b></div> <%= f.text_field :email, placeholder: "Email" %>
+	</div>
+
+	<div class="form-group">
+		<%= f.submit "Save", class: 'btn btn-success' %>
+	</div>
+<% end %>
