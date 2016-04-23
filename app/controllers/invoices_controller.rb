@@ -14,6 +14,8 @@ class InvoicesController < ApplicationController
   	@invoice.room = params[:invoice][:room]
   	@invoice.days = params[:invoice][:days] 
   	@invoice.rate = params[:invoice][:rate] 
+    @invoice.date = Time.now
+    @invoice.special = params[:invoice][:special]
 
   	if @invoice.save
   		flash[:notice] = "Invoice saved."
@@ -24,7 +26,33 @@ class InvoicesController < ApplicationController
   end
 
   def index
-  	@invoices = Invoice.all
+    @startDate = params[:startD]
+    @endDate = params[:endD]
+    status = params[:status]
+
+
+    # if (status == nil || status == "all") 
+    #   @invoices = Invoice.all.where(:date => @startDate..@endDate)
+    # elsif status == "normal"
+    #   @invoices = Invoice.all.where(:date => startDate..endDate, :special => false)
+    # elsif status == "special"
+    #   @invoices = Invoice.all.where(:date => startDate..endDate, :special => true)
+    # end
+
+    @invoices = Invoice.all
+
+    @rooms = 0
+    @money = 0
+
+    @invoices.each do |inv|
+      @rooms += 1
+      if inv.rate == nil
+        inv.rate = 118
+      end
+      @money += inv.rate
+    end
+
+    authorize @invoices
   end
 
   def show

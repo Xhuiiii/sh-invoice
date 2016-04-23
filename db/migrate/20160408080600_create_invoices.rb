@@ -10,6 +10,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.integer :room
       t.integer :rate
       t.integer :days
+      t.boolean :special
 
       t.timestamps null: false
     end

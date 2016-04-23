@@ -2,3 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.invoiceindex {
+	th, td {
+    	border: 1px solid black;
+    	border-collapse: collapse;
+	}
+	th, td {
+    	padding: 5px;
+	}
+}
+
+.address{
+	font-size: 125%;
+	margin-bottom: 120px;	
+}
+
+.title{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.tablehover{
+	width: 100%; 
+	height: "90";
+	table-layout: fixed;
+	th{
+		border: 1px solid black;
+	}
+}
+
+.finaltotalline{
+	border: double; 
+	margin: 8px;
+}
+
+.taxtableheading{
+	border: solid;
+	font-size: 140%;
+}
+
+.taxcontent{
+	font-size: 120%;
+}
+
+.center{
+	text-align: center;
+	font-size: 110%;
+}
+
+.total{
+	font-size: 150%;
+	margin-bottom: 100px;
+}
+

@@ -11,7 +11,18 @@
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li><%= link_to "New", root_path %></li>
-			<li><%= link_to "All", invoices_path %></li>
+			<% if current_user && current_user.role == "sk" %>
+				<li><%= link_to "Invoices", invoices_path %></li>
+				<li><%= link_to "Staff", users_path %></li>
+			<% end %>
+
+		<div class="pull-right">
+			<% if user_signed_in? %>
+				Signed in as: <strong><%= current_user.email %></strong> | <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'navbar-link' %>
+			<% else %>
+				<%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
+			<% end %>
+		</div>
 		</ul>
 
 		<% if flash[:notice] %>

@@ -17,6 +17,9 @@
 		<div class="form-lab"><b>Room rate/night:</b></div> <%= f.text_field :rate, placeholder: "118" %>
 	</div>
 	<div class="form-group">
+		<label>Special</label> <%= f.check_box :special%>
+	</div>
+	<div class="form-group">
 		<div class="form-lab"><b>Address:</b></div> <%= f.text_field :address, placeholder: "Guest address" %>
 	</div>
 	<div class="form-group">

@@ -25,6 +25,8 @@ source 'https://rubygems.org'
  gem 'figaro'
  gem 'pry'
  gem 'devise'
+ gem 'datejs-rails'
+ gem 'bootstrap-daterangepicker-rails'
 
  group :development, :test do
    gem 'byebug'

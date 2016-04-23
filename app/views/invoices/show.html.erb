@@ -1,47 +1,100 @@
+<LINK REL="stylesheet" TYPE="text/css" MEDIA="print, handheld" HREF="invoice.scss">
+	<div class="row">
+		<div class="center">
+			<%= image_tag "logo.png", size: "420x200" %><br>
+			<b>www.hotelshkl.com<br>wwskkd@gmail.com, TEL: 03-9226 2202</b>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="title">
+			<h1><b>TAX INVOICE</b></h1>
+		</div>
+	</div>
 
-
-<div class="row">
-<%= image_tag "logo.png", size: "400x200" %>
-	<div class='pull-right'>
-		<p>
-		SH HOTEL SDN BHD<br>
-		GST:000174313472<br>
-		84 JALAN SUNGAI BESI PUDU,<br>
-		KUALA LUMPUR, 57100, MALAYSIA.<br>
-		TEL: 03-9226 2202<br>
-		shhotel@gmail.com<br>
-		www.hotelshkl.com<br>
-		</p>
+<div class="address">
+	<div class="col-xs-2">
+		<b>Name:</b><br>
+		<b>IC/Passport:</b><br>
+		<b>D.O.B.:</b><br> 
+		<% if @invoice.address != "" %>
+			<b>Address:</b><br>
+		<% end %>
+		<% if @invoice.phone != "" %>
+			<b>Phone:</b><br>
+		<% end %>
+		<% if @invoice.email != "" %>
+			<b>Email:</b><br>
+		<% end %>
+		<b>GST:</b>
+	</div>
+	<div class="col-xs-3">
+		<%= @invoice.name %><br>	
+		<%= @invoice.identification %><br>
+		<%= @invoice.dob.strftime("%d/%m/%Y") %><br>
+		<% if @invoice.address != "" %>
+			<%= @invoice.address %><br>
+		<% end %>
+		<% if @invoice.phone != "" %>
+		<%= @invoice.phone %><br>
+		<% end %>
+		<% if @invoice.email != "" %>
+			<%= @invoice.email %><br>
+		<% end %>
+		000174313472<br>
+	</div>
+	<div class="col-xs-7">
+	</div>
+	<div class="col-xs-3">
+		<b>Time:</b><br>
+		<b>Room number:</b><br>
+		<b>Arrival Date: </b><br>
+		<b>Departure Date: </b>
+	</div>
+	<div class="col-xs-4">
+		<%= Time.now.strftime("%I:%M %p") %><br>		
+		<%= @invoice.room %><br>
+		<%= Time.now.strftime("%^a %d/%m/%Y") %><br>	
+		<%= (Time.now + @invoice.days.days).strftime("%^a %d/%m/%Y") %>
+	</div>
+	<div class="col-xs-1">
 	</div>
 </div>
 
-<div class="row">
-	<div class="text-center">
-		<h1><b>TAX INVOICE</b></h1>
+	<div class="description">
+		<table class="table table-hover">
+			<tr class="taxtableheading">
+				<th class="col-xs-2">&#160Date</th>
+				<th class="col-xs-8">&#160Description</th>
+				<th class="col-xs-2"><center>&#160Charges</center></th>
+			</tr>
+				<tr class="taxcontent">
+					<td><%= Time.now.strftime("%d/%m/%Y") %></td>
+					<td>&#160Net Price</td>
+					<td><center><%= @net %></center></td>
+				</tr>
+				<tr class="taxcontent">
+					<td><%= Time.now.strftime("%d/%m/%Y") %></td>
+					<td>&#160GST</td>
+					<td><center><%= number_with_precision(@gst, precision: 2) %></center></td>
+				</tr>
+		</table>
 	</div>
-</div>
 
-<div class="row">
-<div class="pull-right">
-Date: <%= Time.now.strftime("%^a %d/%m/%Y") %><br>
-Time: <%= Time.now.strftime("%I:%M %p") %>
-</div>
-<div>
-	Name: <%= @invoice.name %><br>
-	IC/Passport: <%= @invoice.identification %><br>
-	D.O.B.: <%= @invoice.dob.strftime("%d/%m/%Y") %><br>
-	Room number: <%= @invoice.room %><br>
-	Net Price(RM): <%= @net %><br>
-	GST 6%: <%= number_with_precision(@gst, precision: 2) %><br>
-	Net Total(RM): <%= @total %><br>
-	<% if @invoice.address != "" %>
-		Address: <%= @invoice.address %><br>
-	<% end %>
-	<% if @invoice.phone != "" %>
-		Phone: <%= @invoice.phone %><br>
-	<% end %>
-	<% if @invoice.email != "" %>
-		Email: <%= @invoice.email %><br>
-	<% end %>
-</div>
-</div>
+<hr class="finaltotalline">
+
+	<div class="total">
+		<div class="col-xs-9">
+		</div>
+
+		<div class="col-xs-1">
+			<b>Total</b>
+		</div>
+		<div class="col-xs-2">
+			<b><center><%= @total %></center></b>
+		</div>
+	</div>
+
+	<footer class="center col-xs-12">
+	<hr>
+	<p><b>SH Hotel SDN BHD, 84 Jalan Sungai Besi Pudu, Kuala Lumpur, 57100, Malaysia.</b></p>
+	</footer>
